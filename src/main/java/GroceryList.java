@@ -19,8 +19,18 @@ public class GroceryList {
     }
 
     public void remove(String item) {
-        for(int i = gList.length-1; i > 0; i--) {
-            gList[i] = (gList[i].equals(item)) ? null : gList[i];
+        String placeholder;
+        for(int i = 0; i < gList.length; i++) {
+            if(gList[i].equals(item)) {
+                gList[i] = null;
+                break;
+            }
+        }
+        //Sort
+        for(int i = 0; i < gList.length-1; i++) {
+            placeholder = gList[i];
+            gList[i] = (gList[i] == null) ? gList[i + 1] : gList[i];
+            gList[i+1] = placeholder;
         }
     }
 
